@@ -12,4 +12,13 @@ describe("Index", function () {
         done();
       });
   });
+  
+  it("breaks", function (done) {
+    superagent.get("http://localhost:3000/untested")
+      .end(function (e, res) {
+        (e === null).should.equal(true);
+        res.text.should.equal("Hey buddy!");
+        done();
+      });
+  });
 });
